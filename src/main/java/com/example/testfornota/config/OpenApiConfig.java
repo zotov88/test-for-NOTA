@@ -15,7 +15,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("String handler")
-                        .description("Сервис, позволяющий посчитать количество символов в строке")
+                        .description("Сервис, анализирующий символы в строке")
                         .version("0.1")
                         .license(new License().name("Apache 2.0"))
                         .contact(new Contact().name("Alexey Zotov")

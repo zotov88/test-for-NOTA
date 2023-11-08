@@ -3,31 +3,34 @@ package com.example.testfornota.service;
 import com.example.testfornota.model.CountCharacter;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 @Service
 public class HandlerStringService {
 
-    private Map<Character, Integer> characterIntegerMap;
+    private Map<Character, Integer> countOfCharactersMap;
 
     public Set<CountCharacter> handlerString(final String string) {
-        characterIntegerMap = new TreeMap<>();
-        Set<CountCharacter> frequencyDictionary = new TreeSet<>();
+        countOfCharactersMap = new TreeMap<>();
+        Set<CountCharacter> frequencyDictionarySet = new TreeSet<>();
 
         for (int i = 0; i < string.length(); i++) {
-            fillCharacterIntegerMap(string.charAt(i));
+            fillCountOfCharactersMap(string.charAt(i));
         }
-        for (Character c : characterIntegerMap.keySet()) {
-            frequencyDictionary.add(new CountCharacter(c, characterIntegerMap.get(c)));
+        for (Character c : countOfCharactersMap.keySet()) {
+            frequencyDictionarySet.add(new CountCharacter(c, countOfCharactersMap.get(c)));
         }
-        return frequencyDictionary;
+        return frequencyDictionarySet;
     }
 
-    private void fillCharacterIntegerMap(char ch) {
-        if (!characterIntegerMap.containsKey(ch)) {
-            characterIntegerMap.put(ch, 1);
+    private void fillCountOfCharactersMap(char ch) {
+        if (!countOfCharactersMap.containsKey(ch)) {
+            countOfCharactersMap.put(ch, 1);
         } else {
-            characterIntegerMap.put(ch, characterIntegerMap.get(ch) + 1);
+            countOfCharactersMap.put(ch, countOfCharactersMap.get(ch) + 1);
         }
     }
 }
